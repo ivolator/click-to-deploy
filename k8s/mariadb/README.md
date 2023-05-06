@@ -172,11 +172,11 @@ export MARIADB_PERSISTENT_DISK_SIZE="32Gi"
 Configure the MariaDB user's credentials (passwords must be encoded in base64):
 
 ```shell
-export MARIADB_ROOT_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 | tr -d '\n' | base64)
-export MARIADB_REPLICA_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 | tr -d '\n' | base64)
+export MARIADB_ROOT_PASSWORD=$(cat /dev/urandom | iconv -f ISO-8859-1 -t UTF-8 | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 | tr -d '\n' | base64)
+export MARIADB_REPLICA_PASSWORD=$(cat /dev/urandom | iconv -f ISO-8859-1 -t UTF-8 | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 | tr -d '\n' | base64)
 
 # Set mysqld-exporter user password.
-export EXPORTER_DB_PASSWORD="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 | tr -d '\n' | base64)"
+export EXPORTER_DB_PASSWORD="$(cat /dev/urandom | iconv -f ISO-8859-1 -t UTF-8 | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 | tr -d '\n' | base64)"
 ```
 
 #### Create namespace in your Kubernetes cluster
